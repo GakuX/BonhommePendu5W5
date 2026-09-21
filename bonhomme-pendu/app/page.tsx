@@ -85,6 +85,18 @@ export default function Home() {
         setGuessedLetters((prev) => [...prev, event.letter]);
         break;
       }
+        case "Won": {
+        setGameState(GameState.Won);
+        break;
+      }
+      case "Lost": {
+        setGameState(GameState.Lost);
+        setWronglyGuessedWord(event.word);
+        setTimeout(() => {
+          setNbWrongGuesses((prev) => prev + 1);
+        }, 1000);
+        break;
+      }
     }
 
     if(event.events){
